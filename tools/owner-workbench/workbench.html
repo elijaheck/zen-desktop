@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ECKO / Owner Workbench · Local Projection</title>
+    <link rel="icon" href="icon.svg">
+    <link rel="stylesheet" href="workbench.css">
+    <script type="module" src="workbench.mjs"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to Owner Workbench</a>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <p class="eyebrow">ECKO / OWNER WORKBENCH</p>
+          <h1>ECKO <span>/ Owner Workbench</span></h1>
+          <p class="lede">Work beside the build. Decide what happens. Keep every marker local and legible.</p>
+        </div>
+        <div class="topbar-controls">
+          <label class="workspace-switcher" for="workspace-select">
+            <span class="field-label">Workspace</span>
+            <select id="workspace-select">
+              <option value="owner">Owner</option>
+              <option value="personal">Personal</option>
+              <option value="business">Business</option>
+            </select>
+          </label>
+          <div class="goal-context" aria-live="polite">
+            <span class="field-label">Current goal</span>
+            <strong id="goal-title">Decide what unlocks the next build slice</strong>
+          </div>
+          <span class="boundary-badge">LOCAL PROJECTION · NO CONNECTIONS</span>
+        </div>
+      </header>
+
+      <nav class="product-nav" aria-label="Owner Workbench navigation">
+        <a class="nav-link is-current" href="#inbox-pane">Inbox</a>
+        <a class="nav-link" href="#inbox-pane">My Tasks</a>
+        <a class="nav-link" href="#workspace-pane">Workspace</a>
+        <a class="nav-link" href="#bots-pane">Bots</a>
+        <span class="nav-note">Compact sidebar is a fallback surface</span>
+      </nav>
+
+      <main id="main-content" class="workbench-grid" aria-label="ECKO Owner Workbench three-pane desktop surface">
+        <section id="inbox-pane" class="pane pane-inbox" data-primary-pane="inbox" aria-labelledby="inbox-heading">
+          <header class="pane-header">
+            <div>
+              <p class="eyebrow">01 / OWNER DECISION RAIL</p>
+              <h2 id="inbox-heading">Inbox &amp; Decisions</h2>
+              <p class="pane-subtitle">A unified local fixture stream. No messages or accounts are connected.</p>
+            </div>
+            <span class="fixture-tag">FIXTURE · LOCAL ONLY</span>
+          </header>
+
+          <div class="inbox-stream" aria-label="Local fixture inbox grouped by lifecycle">
+            <div class="inbox-group">
+              <div class="group-heading"><h3>Needs You</h3><span>02</span></div>
+              <button class="decision-item is-selected" type="button" data-inbox-item="handoff">
+                <span class="item-marker">!</span>
+                <span class="item-copy"><strong>Review the staged workspace hand-off</strong><small>Owner thread / staged hand-off</small></span>
+                <span class="item-state">DECIDE</span>
+              </button>
+              <button class="decision-item" type="button" data-inbox-item="scope">
+                <span class="item-marker">↗</span>
+                <span class="item-copy"><strong>Choose the next slice of the owner surface</strong><small>Goal note / local fixture</small></span>
+                <span class="item-state">CHOICE</span>
+              </button>
+            </div>
+            <div class="inbox-group">
+              <div class="group-heading"><h3>Active</h3><span>01</span></div>
+              <button class="decision-item" type="button" data-inbox-item="canvas">
+                <span class="item-marker marker-cyan">◆</span>
+                <span class="item-copy"><strong>Build canvas is staged beside the preview</strong><small>Workspace / local worktree</small></span>
+                <span class="item-state">ACTIVE</span>
+              </button>
+            </div>
+            <div class="inbox-group">
+              <div class="group-heading"><h3>Waiting</h3><span>01</span></div>
+              <button class="decision-item" type="button" data-inbox-item="provider">
+                <span class="item-marker marker-muted">…</span>
+                <span class="item-copy"><strong>Provider hand-off is deliberately offline</strong><small>Provider boundary / local fixture</small></span>
+                <span class="item-state">WAITING</span>
+              </button>
+            </div>
+            <div class="inbox-group">
+              <div class="group-heading"><h3>Recent</h3><span>01</span></div>
+              <button class="decision-item" type="button" data-inbox-item="receipt">
+                <span class="item-marker marker-muted">✓</span>
+                <span class="item-copy"><strong>Local inspection marker recorded</strong><small>Receipt tray / local projection</small></span>
+                <span class="item-state">RECENT</span>
+              </button>
+            </div>
+          </div>
+
+          <article class="decision-detail" aria-labelledby="selected-item-title">
+            <div class="detail-kicker"><span id="selected-item-marker">NEEDS DECISION</span><span>FIXTURE · LOCAL ONLY</span></div>
+            <h3 id="selected-item-title">Review the staged workspace hand-off</h3>
+            <p id="selected-item-source" class="source-line">Source / Owner thread / staged hand-off</p>
+            <div class="detail-fields">
+              <div><span class="field-label">Reason</span><p id="selected-item-reason">A local build checkpoint is ready for your decision.</p></div>
+              <div><span class="field-label">Next Unlock</span><p id="selected-item-next-unlock">Approve the checkpoint to unlock the simulated execution marker.</p></div>
+            </div>
+            <p class="owner-actions-label">Exact owner actions · local only</p>
+            <div class="owner-actions">
+              <button id="approve-decision" class="button button-amber" type="button" data-decision="approve">Approve</button>
+              <button id="deny-decision" class="button button-quiet" type="button" data-decision="deny">Deny</button>
+              <button id="revise-decision" class="button button-quiet" type="button" data-decision="revise">Request revision</button>
+              <button id="reset-demo" class="button button-quiet" type="button" data-decision="reset">Reset</button>
+            </div>
+          </article>
+
+          <div id="relay-card" class="lifecycle-card" aria-labelledby="relay-heading">
+            <div class="lifecycle-header">
+              <div><p class="eyebrow">OWNER GATE / DISTINCT MARKERS</p><h3 id="relay-heading">Approve → Execute → Verify → Complete</h3></div>
+              <span id="approval-state" class="state-tag state-amber">PENDING</span>
+            </div>
+            <p class="lifecycle-intro">Each marker is a local demo state. Execution is blocked until approval; completion never claims a live result.</p>
+            <ol id="relay-strip" class="lifecycle-strip" aria-label="Approval, execution, verification, and completion stages">
+              <li data-stage-item="approval"><button class="lifecycle-step" type="button" data-stage="approval"><span>01</span><strong>Approve</strong></button></li>
+              <li data-stage-item="execution"><button class="lifecycle-step" type="button" data-stage="execution"><span>02</span><strong>Execute</strong></button></li>
+              <li data-stage-item="verification"><button class="lifecycle-step" type="button" data-stage="verification"><span>03</span><strong>Verify</strong></button></li>
+              <li data-stage-item="complete"><button class="lifecycle-step" type="button" data-stage="complete"><span>04</span><strong>Complete</strong></button></li>
+            </ol>
+            <div class="lifecycle-detail" aria-live="polite">
+              <div><span id="relay-stage-label" class="field-label">CURRENT MARKER / APPROVAL</span><p id="relay-stage-description">Owner decision awaits an explicit local approval click.</p></div>
+              <p id="relay-safety" class="safety-note">No command, provider, or runtime executed.</p>
+            </div>
+            <p id="relay-status" class="status-line" role="status">Local projection ready. No command, provider, or runtime executed.</p>
+          </div>
+
+          <div id="receipt-tray" class="receipt-tray" aria-labelledby="receipt-heading">
+            <div class="receipt-heading"><div><p class="eyebrow">INSPECTION TRAY</p><h3 id="receipt-heading">Receipts</h3></div><span class="fixture-tag">LOCAL MARKER</span></div>
+            <p id="receipt-detail">No execution receipt exists. Advance the relay to see labeled local markers.</p>
+            <div class="receipt-meta"><span id="receipt-provenance">FIXTURE · LOCAL ONLY</span><button id="inspect-receipt" class="text-button" type="button" data-decision="receipt">Inspect marker</button></div>
+          </div>
+        </section>
+
+        <section id="workspace-pane" class="pane pane-workspace" data-primary-pane="workspace" aria-labelledby="workspace-heading">
+          <header class="pane-header">
+            <div>
+              <p class="eyebrow">02 / ACTIVE BUILD CANVAS</p>
+              <h2 id="workspace-heading">Workspace &amp; Preview</h2>
+              <p class="pane-subtitle">Build alongside a static browser frame. No active tab or remote page is read.</p>
+            </div>
+            <span class="fixture-tag">STATIC LOCAL PREVIEW</span>
+          </header>
+
+          <div class="workspace-context-card">
+            <div class="folder-map"><span class="field-label">Folder Map</span><strong id="folder-name">ECKO / Owner Workbench</strong><small id="worktree-name">owner-workbench / fixture</small></div>
+            <div class="goal-card"><span class="field-label">Goal</span><strong id="workspace-goal">Decide what unlocks the next build slice</strong><small id="workspace-context">Owner control surface · one local goal</small></div>
+            <span id="build-status" class="state-tag state-cyan">CHECKPOINT READY</span>
+          </div>
+
+          <div class="provider-tabs-wrap">
+            <div class="subheading-row"><span class="field-label">Provider surfaces</span><span class="muted-mono">all offline fixtures</span></div>
+            <div id="provider-tabs" class="provider-tabs" role="tablist" aria-label="Offline provider fixtures">
+              <button class="provider-tab is-selected" type="button" role="tab" aria-selected="true" data-provider="cursor"><strong>Cursor</strong><small>NOT CONNECTED</small></button>
+              <button class="provider-tab" type="button" role="tab" aria-selected="false" data-provider="codex"><strong>Codex</strong><small>NOT CONNECTED</small></button>
+              <button class="provider-tab" type="button" role="tab" aria-selected="false" data-provider="claude"><strong>Claude</strong><small>NOT CONNECTED</small></button>
+              <button class="provider-tab" type="button" role="tab" aria-selected="false" data-provider="grok"><strong>Grok</strong><small>NOT CONNECTED</small></button>
+            </div>
+            <p id="provider-status" class="status-line">Cursor is a local provider tab fixture. No provider is connected.</p>
+          </div>
+
+          <div class="preview-frame" aria-label="Static local browser preview">
+            <div class="preview-chrome"><span class="window-dots"><i></i><i></i><i></i></span><span class="preview-url">ecko.local / owner-workbench / preview</span><span class="preview-label">STATIC LOCAL PREVIEW</span></div>
+            <div class="preview-body">
+              <div class="preview-sidebar"><span class="preview-logo">E</span><span class="preview-nav-line is-on"></span><span class="preview-nav-line"></span><span class="preview-nav-line"></span><span class="preview-nav-line"></span></div>
+              <div class="preview-content"><div class="preview-content-head"><span class="preview-overline">WORKTREE / LOCAL-PROOF</span><span class="preview-pill">DRAFT</span></div><div class="preview-title-line"></div><div class="preview-title-line short"></div><div class="preview-columns"><div><span class="preview-block-title"></span><span class="preview-block-line"></span><span class="preview-block-line"></span><span class="preview-block-line short"></span></div><div><span class="preview-block-title"></span><span class="preview-block-line"></span><span class="preview-block-line short"></span><span class="preview-block-line"></span></div></div><div class="preview-footer-note">No remote page loaded · no tab data inspected</div></div>
+            </div>
+          </div>
+
+          <div class="timeline-card">
+            <div class="subheading-row"><span class="field-label">Build / task / checkpoint</span><span class="muted-mono">local fixture timeline</span></div>
+            <ol class="build-timeline">
+              <li class="is-done"><span class="timeline-dot"></span><div><strong>Folder mapped</strong><small>Source rail and preview share this local workspace.</small></div><time>01</time></li>
+              <li class="is-current"><span class="timeline-dot"></span><div><strong id="task-title">Review the staged workspace hand-off</strong><small id="checkpoint-title">Checkpoint 03 · source rail composed beside preview</small></div><time>02</time></li>
+              <li><span class="timeline-dot"></span><div><strong>Owner unlock</strong><small>Advance only after the explicit approval marker.</small></div><time>03</time></li>
+            </ol>
+          </div>
+
+          <div class="share-policy" aria-labelledby="share-heading">
+            <div class="share-policy-header"><div><p class="eyebrow">BROWSER SESSION SHARING</p><h3 id="share-heading">Scoped to <span id="share-bot-name">Atlas</span> · <span id="share-workspace-name">Owner</span></h3></div><span id="share-state" class="state-tag state-muted">REVOKED</span></div>
+            <p>Policy-state demo only. Grant, take back, and revoke alter local state. Nothing is captured, read, or transmitted.</p>
+            <div class="share-actions"><button id="grant-share" class="button button-cyan" type="button" data-share-action="granted">Grant</button><button id="takeback-share" class="button button-quiet" type="button" data-share-action="taken-back">Take back</button><button id="revoke-share" class="button button-quiet" type="button" data-share-action="revoked">Revoke</button></div>
+            <p id="share-status" class="status-line" role="status">Browser share is revoked locally.</p>
+          </div>
+        </section>
+
+        <section id="bots-pane" class="pane pane-bots" data-primary-pane="bots" aria-labelledby="bots-heading">
+          <header class="pane-header">
+            <div>
+              <p class="eyebrow">03 / ONGOING TEAMMATES</p>
+              <h2 id="bots-heading">Bots &amp; Control</h2>
+              <p class="pane-subtitle">Named bot fixtures remain visible without pretending to be live agents.</p>
+            </div>
+            <span class="fixture-tag">ALL OFFLINE</span>
+          </header>
+
+          <div class="bot-roster" aria-label="Local bot roster">
+            <button class="bot-row is-selected" type="button" data-bot="atlas"><span class="bot-avatar">A</span><span class="bot-row-copy"><strong>Atlas</strong><small>Owner dispatch · Owner · FIXTURE · OFFLINE</small></span><span class="bot-row-status">READY / LOCAL</span></button>
+            <button class="bot-row" type="button" data-bot="morrow"><span class="bot-avatar avatar-violet">M</span><span class="bot-row-copy"><strong>Morrow</strong><small>Personal planning · Personal · FIXTURE · OFFLINE</small></span><span class="bot-row-status">WAITING / LOCAL</span></button>
+            <button class="bot-row" type="button" data-bot="ledger"><span class="bot-avatar avatar-amber">L</span><span class="bot-row-copy"><strong>Ledger</strong><small>Business operations · Business · FIXTURE · OFFLINE</small></span><span class="bot-row-status">ACTIVE / LOCAL</span></button>
+          </div>
+
+          <article class="bot-detail" aria-labelledby="selected-bot-name">
+            <div class="bot-detail-heading"><div class="bot-avatar bot-avatar-large">A</div><div><span class="field-label">Selected bot · <span id="selected-bot-provider">FIXTURE · OFFLINE</span></span><h3 id="selected-bot-name">Atlas</h3><p id="selected-bot-role">Owner dispatch · Owner</p></div><span id="selected-bot-status" class="state-tag state-cyan">READY LOCALLY</span></div>
+            <div class="conversation-card"><div class="conversation-meta"><span>Conversation / local fixture</span><span id="conversation-context">Owner</span></div><p id="conversation-name">Atlas · owner decision thread</p><blockquote id="conversation-copy">“I can stage the next local marker when you choose a direction.”</blockquote><span class="conversation-boundary">No bot, provider, or runtime is connected.</span></div>
+            <div class="handoff-card"><div class="subheading-row"><span class="field-label">Task / hand-off prompt</span><span class="muted-mono">local fixture</span></div><strong id="bot-task">Review the staged workspace hand-off</strong><p id="bot-summary">Keeps owner decisions and next unlocks visible.</p></div>
+          </article>
+
+          <div class="composer-card">
+            <div class="composer-header"><div><p class="eyebrow">AMBIENT COMPOSER</p><h3>Draft a direction</h3></div><span class="fixture-tag">LOCAL DRAFT ONLY</span></div>
+            <label for="draft-direction">Local hand-off note</label>
+            <textarea id="draft-direction" rows="3" placeholder="Write a direction for your own inspection…"></textarea>
+            <div class="composer-footer"><span>Steering and messaging are disabled in this proof.</span><button id="draft-direction-button" class="button button-quiet" type="button" disabled aria-disabled="true">Save local draft</button></div>
+          </div>
+
+          <div class="control-boundary"><span class="field-label">Control boundary</span><p>Approve, deny, revise, reset, and sharing controls write only to the extension's namespaced demo state. No external action can be taken.</p><code>owner-workbench:demo-state:v2</code></div>
+        </section>
+      </main>
+
+      <footer class="footer-bar"><span>ECKO / Owner Workbench</span><span>LOCAL PROJECTION · NO CONNECTIONS</span><span>Browser shell only · Brain, Hermes, and provider records remain outside this proof.</span></footer>
+    </div>
+  </body>
+</html>

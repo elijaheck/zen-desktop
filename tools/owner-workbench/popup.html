@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ECKO / Owner Workbench</title>
+    <link rel="icon" href="icon.svg">
+    <link rel="stylesheet" href="popup.css">
+    <script type="module" src="popup.mjs"></script>
+  </head>
+  <body>
+    <main class="popup-shell">
+      <header class="popup-header">
+        <p class="utility-label">ECKO / OWNER WORKBENCH</p>
+        <h1>Open Owner Workbench</h1>
+        <span class="connection-badge">LOCAL PROJECTION · NO CONNECTIONS</span>
+      </header>
+
+      <p class="popup-copy">Open the canonical full-extension-tab workbench to decide alongside the build. The compact sidebar is a readable fallback, not the main product.</p>
+
+      <div class="popup-actions">
+        <button id="open-tab" class="primary-button" type="button">Open Owner Workbench</button>
+        <button id="open-rail" class="secondary-button" type="button">Open compact sidebar fallback</button>
+      </div>
+
+      <section class="fallback-panel" aria-labelledby="fallback-heading">
+        <p class="utility-label">MANUAL FALLBACK</p>
+        <h2 id="fallback-heading">Open the local extension page directly</h2>
+        <p id="fallback-status" class="status-line" role="status">If Zen declines a request, copy this extension URL and open it in a new tab.</p>
+        <div class="copy-row">
+          <label class="visually-hidden" for="workbench-url">Owner Workbench extension URL</label>
+          <input id="workbench-url" type="text" readonly spellcheck="false">
+          <button id="copy-url" class="copy-button" type="button">Copy</button>
+        </div>
+      </section>
+
+      <p class="privacy-note">No account, message, browser history, active tab, command, provider, or runtime is accessed. The sidebar is only a compact fallback surface.</p>
+    </main>
+  </body>
+</html>

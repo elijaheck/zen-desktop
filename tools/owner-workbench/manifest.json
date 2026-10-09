@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Owner Workbench · Local Proof",
+  "version": "0.1.0",
+  "description": "A local-only owner dispatch console proof for Zen Browser.",
+  "action": {
+    "default_title": "Open Owner Workbench",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.svg",
+      "32": "icon.svg",
+      "48": "icon.svg"
+    }
+  },
+  "sidebar_action": {
+    "default_title": "Owner Workbench",
+    "default_panel": "workbench.html",
+    "default_icon": "icon.svg"
+  },
+  "icons": {
+    "16": "icon.svg",
+    "32": "icon.svg",
+    "48": "icon.svg"
+  },
+  "permissions": [],
+  "host_permissions": [],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "owner-workbench-local@eckos.local"
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src 'none'; style-src 'self'; img-src 'self'"
+  }
+}
